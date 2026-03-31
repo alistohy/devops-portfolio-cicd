@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Stohy | Junior DevOps Engineer | CI/CD, Docker, Linux</title>
+  <meta name="description" content="Ali Stohy - Junior DevOps Engineer portfolio focused on CI/CD, Azure DevOps, Docker, Linux, Bash automation, and recruiter-ready project proof." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            ink: '#060816',
+            panel: '#0b1120',
+            cyanx: '#22d3ee',
+            bluex: '#60a5fa',
+            violetx: '#8b5cf6',
+            line: 'rgba(148,163,184,0.18)'
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(34,211,238,.18), 0 20px 60px rgba(34,211,238,.12)',
+            soft: '0 20px 60px rgba(2,6,23,.45)'
+          },
+          backgroundImage: {
+            grid: 'linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-ink text-slate-100 antialiased selection:bg-cyanx/30 selection:text-white">
+  <div id="loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950">
+    <div class="loader-backdrop" aria-hidden="true"></div>
+    <div class="loader-shell text-center">
+      <div class="loader-devops-mark mx-auto" aria-hidden="true">
+        <svg class="loader-infinity-svg" viewBox="0 0 300 180" role="presentation" aria-hidden="true">
+          <path id="loaderInfinityPath" d="M 30 90 C 30 50, 75 35, 110 60 C 130 75, 140 90, 150 90 C 160 90, 170 75, 190 60 C 225 35, 270 50, 270 90 C 270 130, 225 145, 190 120 C 170 105, 160 90, 150 90 C 140 90, 130 105, 110 120 C 75 145, 30 130, 30 90 Z" />
+          <path class="loader-infinity-glow" d="M 30 90 C 30 50, 75 35, 110 60 C 130 75, 140 90, 150 90 C 160 90, 170 75, 190 60 C 225 35, 270 50, 270 90 C 270 130, 225 145, 190 120 C 170 105, 160 90, 150 90 C 140 90, 130 105, 110 120 C 75 145, 30 130, 30 90 Z" />
+          <circle class="loader-orbit loader-orbit-a" r="5.5">
+            <animateMotion dur="1.35s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#loaderInfinityPath" />
+            </animateMotion>
+          </circle>
+          <circle class="loader-orbit loader-orbit-b" r="4.5">
+            <animateMotion dur="1.6s" begin="-0.45s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#loaderInfinityPath" />
+            </animateMotion>
+          </circle>
+          <circle class="loader-orbit loader-orbit-c" r="4">
+            <animateMotion dur="1.95s" begin="-0.9s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#loaderInfinityPath" />
+            </animateMotion>
+          </circle>
+        </svg>
+      </div>
+      <p class="loader-kicker mt-6 font-mono text-xs uppercase tracking-[0.28em] text-cyanx">DevOps Workflow</p>
+      <h2 class="loader-title mt-4 text-3xl font-black text-white sm:text-4xl">Ali Stohy</h2>
+      <p class="loader-subtitle mt-4 text-sm text-slate-400">Loading pipelines, systems, and portfolio highlights</p>
+      <div class="loader-metrics mt-6">
+        <div class="loader-metric">
+          <span class="loader-metric-label">CI/CD</span>
+          <span class="loader-metric-dot"></span>
+        </div>
+        <div class="loader-metric">
+          <span class="loader-metric-label">Docker</span>
+          <span class="loader-metric-dot"></span>
+        </div>
+        <div class="loader-metric">
+          <span class="loader-metric-label">Linux</span>
+          <span class="loader-metric-dot"></span>
+        </div>
+      </div>
+      <div class="loader-bar mt-5 mx-auto">
+        <div class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="cursor-aura" aria-hidden="true"></div>
+
+  <canvas id="particles"></canvas>
+  <div class="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,.12),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(139,92,246,.12),transparent_30%)]"></div>
+
+  <header class="site-shell fixed top-0 z-50 w-full backdrop-blur-md bg-slate-950/35 border-b border-white/6">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="#home" class="flex items-center gap-3 font-mono text-sm tracking-[0.25em] text-cyanx">
+        <img src="profile-photo.jpg" alt="Ali Stohy portrait" class="nav-photo h-10 w-10 rounded-full object-cover object-top" />
+        <span>ALI STOHY</span>
+      </a>
+      <nav class="hidden gap-7 text-sm text-slate-300 md:flex">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#skills" class="hover:text-white transition">Skills</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#experience" class="hover:text-white transition">Experience</a>
+        <a href="#training" class="hover:text-white transition">Training</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+      </nav>
+      <a href="https://github.com/alistohy" target="_blank" class="rounded-full border border-cyanx/30 px-4 py-2 text-sm text-cyanx transition hover:border-cyanx hover:bg-cyanx/10">GitHub</a>
+    </div>
+  </header>
+
+  <main id="home" class="site-shell relative">
+    <section class="relative overflow-hidden pt-28 lg:pt-36">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-20 lg:grid-cols-[1fr_.92fr] lg:px-8">
+        <div class="relative">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyanx/20 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-cyanx">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-cyanx"></span>
+            Open to Junior DevOps and Cloud Roles
+          </div>
+          <h1 class="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Junior DevOps Engineer building
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanx via-bluex to-violetx">CI/CD workflows, Docker-based delivery,</span>
+            and practical Linux automation.
+          </h1>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            I'm <span class="font-semibold text-white">Ali Stohy</span>, a Cairo-based Junior DevOps Engineer with hands-on work in
+            <span class="text-cyanx">Azure DevOps</span>, <span class="text-cyanx">Docker</span>,
+            <span class="text-cyanx">Linux</span>, <span class="text-cyanx">Git/GitHub</span>, and <span class="text-cyanx">Bash automation</span>.
+            My goal is to help teams ship faster, reduce manual work, and keep delivery workflows stable and repeatable.
+          </p>
+
+          <div class="mt-6 flex max-w-3xl flex-wrap gap-3">
+            <span class="skill-chip">Azure DevOps</span>
+            <span class="skill-chip">Docker</span>
+            <span class="skill-chip">Linux</span>
+            <span class="skill-chip">CI/CD</span>
+            <span class="skill-chip">GitHub</span>
+            <span class="skill-chip">Bash</span>
+            <span class="skill-chip">Technical Support Operations</span>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-cyanx to-bluex px-6 py-3 font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5">
+              View Projects
+              <span class="transition group-hover:translate-x-1">-></span>
+            </a>
+            <a href="Ali Stohy (CV).pdf" download class="inline-flex items-center gap-3 rounded-2xl border border-cyanx/30 bg-cyanx/10 px-6 py-3 font-semibold text-cyanx transition hover:border-cyanx hover:bg-cyanx/15">
+              Download CV
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-3 rounded-2xl border border-white/12 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-cyanx/40 hover:bg-white/10">
+              Contact Me
+            </a>
+          </div>
+
+          <div class="mt-8 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+            <div class="glass stat-card rounded-3xl p-5">
+              <div class="text-3xl font-black text-white">25+</div>
+              <div class="mt-1 text-sm text-slate-400">Technical issues resolved weekly in live operations</div>
+            </div>
+            <div class="glass stat-card rounded-3xl p-5">
+              <div class="text-3xl font-black text-white">CI/CD</div>
+              <div class="mt-1 text-sm text-slate-400">Hands-on pipeline practice with Azure DevOps delivery workflows</div>
+            </div>
+            <div class="glass stat-card rounded-3xl p-5">
+              <div class="text-3xl font-black text-white">Docker</div>
+              <div class="mt-1 text-sm text-slate-400">Container-based workflow experience for cleaner environment consistency</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-16 top-8 hidden h-32 w-32 rounded-full bg-cyanx/15 blur-3xl lg:block"></div>
+          <div class="absolute -right-10 bottom-0 hidden h-32 w-32 rounded-full bg-violetx/15 blur-3xl lg:block"></div>
+
+          <div class="glass hero-card relative overflow-hidden rounded-[32px] border border-white/10 p-4 shadow-soft lg:p-5">
+            <div class="bg-grid absolute inset-0 bg-[size:26px_26px] opacity-[0.12]"></div>
+            <div class="relative z-10">
+              <div class="mb-5 flex items-center justify-between">
+                <div>
+                  <div class="font-mono text-xs uppercase tracking-[0.26em] text-cyanx">Technical Snapshot</div>
+                  <div class="mt-2 text-xl font-bold text-white sm:text-2xl">Current DevOps Focus</div>
+                </div>
+                <div class="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-xs font-semibold text-emerald-300">
+                  Open to Work
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-2xl border border-white/8 bg-slate-900/55 p-4">
+                  <div class="mb-2 font-mono text-xs text-slate-400">stack.yml</div>
+                  <div class="space-y-2 font-mono text-sm leading-6">
+                    <div><span class="text-violetx">cicd</span>: <span class="text-slate-200">Azure DevOps pipelines</span></div>
+                    <div><span class="text-violetx">containers</span>: <span class="text-slate-200">Docker / containerization</span></div>
+                    <div><span class="text-violetx">systems</span>: <span class="text-slate-200">Linux / Windows administration</span></div>
+                    <div><span class="text-violetx">automation</span>: <span class="text-slate-200">Bash / scripting fundamentals</span></div>
+                    <div><span class="text-violetx">vcs</span>: <span class="text-slate-200">Git / GitHub workflow</span></div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="glass rounded-2xl p-4">
+                    <div class="font-mono text-xs text-slate-400">based in</div>
+                    <div class="mt-2 text-lg font-bold text-white">Cairo, Egypt</div>
+                    <div class="mt-1 text-sm text-slate-400">Ready for junior DevOps and cloud roles.</div>
+                  </div>
+                  <div class="glass rounded-2xl p-4">
+                    <div class="font-mono text-xs text-slate-400">main focus</div>
+                    <div class="mt-2 text-lg font-bold text-white">CI/CD and Automation</div>
+                    <div class="mt-1 text-sm text-slate-400">Practical workflow improvement with DevOps tools.</div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-cyanx/14 bg-cyanx/6 p-4 text-sm leading-7 text-slate-300">
+                  I combine IT support discipline with DevOps training to improve repeatability,
+                  reduce manual work, and support more reliable delivery.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12 max-w-2xl">
+          <div class="section-kicker">About Me</div>
+          <h2 class="section-title">Operational discipline with a clear move into DevOps engineering.</h2>
+          <p class="section-copy">
+            I started in technical support, where service continuity, troubleshooting speed, and clear communication matter every day.
+            That background now shapes how I approach DevOps work: understand the system, reduce manual effort,
+            improve deployment consistency, and build workflows that teams can trust.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">01</div>
+            <h3 class="mt-5 text-xl font-bold">Delivery Mindset</h3>
+            <p class="mt-3 text-slate-300">
+              I focus on making build, test, and release work more repeatable through pipelines,
+              scripting, and structured deployment steps.
+            </p>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">02</div>
+            <h3 class="mt-5 text-xl font-bold">Systems Thinking</h3>
+            <p class="mt-3 text-slate-300">
+              I work across Linux, Windows, containers, and support operations with a practical understanding
+              of stability, troubleshooting, and environment consistency.
+            </p>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">03</div>
+            <h3 class="mt-5 text-xl font-bold">Growth Path</h3>
+            <p class="mt-3 text-slate-300">
+              I am actively building deeper DevOps capability in cloud, IaC, Kubernetes, and monitoring
+              while grounding everything in real operational work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12 max-w-2xl">
+          <div class="section-kicker">Core Skills</div>
+          <h2 class="section-title">Tools and capabilities aligned with junior DevOps hiring requirements.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-4">
+          <div class="glass card-hover rounded-[28px] p-7">
+            <h3 class="text-lg font-bold text-white">CI/CD and Version Control</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Azure DevOps</span>
+              <span class="skill-chip">CI/CD Pipelines</span>
+              <span class="skill-chip">Git</span>
+              <span class="skill-chip">GitHub</span>
+              <span class="skill-chip">Deployment Workflow</span>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <h3 class="text-lg font-bold text-white">Containers and Systems</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Containerization</span>
+              <span class="skill-chip">Linux</span>
+              <span class="skill-chip">Windows</span>
+              <span class="skill-chip">Environment Consistency</span>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <h3 class="text-lg font-bold text-white">Automation and Operations</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Bash</span>
+              <span class="skill-chip">Python Basics</span>
+              <span class="skill-chip">Troubleshooting</span>
+              <span class="skill-chip">Documentation</span>
+              <span class="skill-chip">Operational Support</span>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <h3 class="text-lg font-bold text-white">Currently Building</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Terraform Fundamentals</span>
+              <span class="skill-chip">Kubernetes Basics</span>
+              <span class="skill-chip">Cloud Fundamentals</span>
+              <span class="skill-chip">Monitoring Workflows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <div class="section-kicker">Featured Projects</div>
+            <h2 class="section-title">Projects presented the way recruiters and hiring managers want to scan them.</h2>
+          </div>
+          <a href="https://github.com/alistohy" target="_blank" class="inline-flex items-center gap-2 text-cyanx hover:text-white">
+            View GitHub profile ->
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+          <article class="glass project-card rounded-[30px] p-7">
+            <div class="project-topline">PROJECT 01</div>
+            <h3 class="mt-3 text-2xl font-bold text-white">Azure DevOps CI/CD Pipeline</h3>
+            <p class="mt-4 text-slate-300">
+              Built a CI/CD workflow in Azure DevOps to move a project from manual release steps toward
+              a cleaner build and deployment process with better repeatability.
+            </p>
+            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="mini-panel">
+                <div class="mini-label">Problem</div>
+                <div class="mini-text">Manual release work creates inconsistency and slows down delivery.</div>
+              </div>
+              <div class="mini-panel">
+                <div class="mini-label">What I built</div>
+                <div class="mini-text">Pipeline stages for build and deployment logic using Azure DevOps workflows.</div>
+              </div>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Azure DevOps</span>
+              <span class="skill-chip">CI/CD</span>
+              <span class="skill-chip">Build Automation</span>
+              <span class="skill-chip">Deployment Workflow</span>
+            </div>
+            <a href="https://github.com/alistohy" target="_blank" class="mt-6 inline-flex items-center gap-2 text-cyanx hover:text-white">Project source on GitHub -></a>
+          </article>
+
+          <article class="glass project-card rounded-[30px] p-7">
+            <div class="project-topline">PROJECT 02</div>
+            <h3 class="mt-3 text-2xl font-bold text-white">Dockerized Application Workflow</h3>
+            <p class="mt-4 text-slate-300">
+              Used Docker to package applications into consistent environments so local setup and deployment
+              behavior stay closer together.
+            </p>
+            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="mini-panel">
+                <div class="mini-label">Problem</div>
+                <div class="mini-text">Environment mismatch causes setup friction and avoidable runtime issues.</div>
+              </div>
+              <div class="mini-panel">
+                <div class="mini-label">What I built</div>
+                <div class="mini-text">Containerized workflow focused on consistency, portability, and easier onboarding.</div>
+              </div>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Containers</span>
+              <span class="skill-chip">Linux</span>
+              <span class="skill-chip">Deployment Consistency</span>
+            </div>
+            <a href="https://github.com/alistohy" target="_blank" class="mt-6 inline-flex items-center gap-2 text-cyanx hover:text-white">Project source on GitHub -></a>
+          </article>
+
+          <article class="glass project-card rounded-[30px] p-7">
+            <div class="project-topline">PROJECT 03</div>
+            <h3 class="mt-3 text-2xl font-bold text-white">Linux Automation Scripts</h3>
+            <p class="mt-4 text-slate-300">
+              Wrote Bash automation for repeated Linux tasks to reduce manual steps and improve operational consistency.
+            </p>
+            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="mini-panel">
+                <div class="mini-label">Problem</div>
+                <div class="mini-text">Repeated command-line admin tasks waste time and increase the chance of mistakes.</div>
+              </div>
+              <div class="mini-panel">
+                <div class="mini-label">What I built</div>
+                <div class="mini-text">Bash-based helper scripts for maintenance, updates, and repeatable workflow actions.</div>
+              </div>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Bash</span>
+              <span class="skill-chip">Linux</span>
+              <span class="skill-chip">Automation</span>
+              <span class="skill-chip">Ops Efficiency</span>
+            </div>
+            <a href="https://github.com/alistohy" target="_blank" class="mt-6 inline-flex items-center gap-2 text-cyanx hover:text-white">Project source on GitHub -></a>
+          </article>
+
+          <article class="glass project-card rounded-[30px] p-7">
+            <div class="project-topline">PROJECT 04</div>
+            <h3 class="mt-3 text-2xl font-bold text-white">IT Operations & Support Workflow</h3>
+            <p class="mt-4 text-slate-300">
+              Applied structured troubleshooting in a live support environment while maintaining service continuity,
+              documentation quality, and user support responsiveness.
+            </p>
+            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="mini-panel">
+                <div class="mini-label">Problem</div>
+                <div class="mini-text">Unresolved hardware, software, and user issues can interrupt daily business work.</div>
+              </div>
+              <div class="mini-panel">
+                <div class="mini-label">What I delivered</div>
+                <div class="mini-text">Faster issue handling, clearer documentation, and stronger operational follow-through.</div>
+              </div>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-chip">Troubleshooting</span>
+              <span class="skill-chip">Documentation</span>
+              <span class="skill-chip">System Stability</span>
+              <span class="skill-chip">Support Ops</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12 max-w-2xl">
+          <div class="section-kicker">Experience</div>
+          <h2 class="section-title">Experience that connects operations work to DevOps readiness.</h2>
+        </div>
+
+        <div class="relative border-l border-white/10 pl-8">
+          <div class="timeline-dot" style="top: 18px;"></div>
+          <div class="glass mb-8 rounded-[28px] p-7">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">IT Technical Support Engineer - Abu Dawood</h3>
+                <p class="mt-1 text-slate-400">February 2024 - Present</p>
+              </div>
+              <span class="rounded-full border border-cyanx/20 bg-cyanx/10 px-4 py-2 text-sm text-cyanx">Operations</span>
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-300">
+              <li>Resolved <span class="font-semibold text-white">25+ technical issues weekly</span> across hardware, software, and user environments.</li>
+              <li>Reduced operational disruption through faster troubleshooting, escalation, and issue follow-up.</li>
+              <li>Maintained clearer documentation and support continuity in a fast-paced production environment.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-dot" style="top: 255px;"></div>
+          <div class="glass mb-8 rounded-[28px] p-7">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">DevOps Engineer Trainee - IT Gate Academy</h3>
+                <p class="mt-1 text-slate-400">July 2025 - Present</p>
+              </div>
+              <span class="rounded-full border border-violetx/20 bg-violetx/10 px-4 py-2 text-sm text-violetx">Automation</span>
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-300">
+              <li>Practiced <span class="font-semibold text-white">Docker</span>, <span class="font-semibold text-white">Linux administration</span>, and <span class="font-semibold text-white">Bash scripting</span> in hands-on DevOps labs.</li>
+              <li>Built CI/CD pipeline logic using <span class="font-semibold text-white">Azure DevOps</span> for build and deployment automation exercises.</li>
+              <li>Focused on environment consistency, delivery automation, and core DevOps engineering practices.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-dot" style="top: 491px;"></div>
+          <div class="glass rounded-[28px] p-7">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">WordPress Web Developer & Graphic Designer</h3>
+                <p class="mt-1 text-slate-400">2021 - 2022</p>
+              </div>
+              <span class="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-slate-300">Foundation</span>
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-300">
+              <li>Built a stronger front-end and product mindset through web development and design work.</li>
+              <li>Improved SEO, plugin integration, and content workflows while developing practical problem-solving discipline.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12 max-w-2xl">
+          <div class="section-kicker">Training</div>
+          <h2 class="section-title">Learning path aligned with current junior DevOps market requirements.</h2>
+          <p class="section-copy">
+            I am building depth in the tools most often requested for entry-level DevOps roles while keeping my profile honest about current hands-on strengths.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">A1</div>
+            <h3 class="mt-5 text-xl font-bold">Hands-on DevOps Training</h3>
+            <p class="mt-3 text-slate-300">
+              Structured practical training through IT Gate Academy covering Docker, Linux, Bash, and Azure DevOps pipeline workflows.
+            </p>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">A2</div>
+            <h3 class="mt-5 text-xl font-bold">Current Focus Areas</h3>
+            <p class="mt-3 text-slate-300">
+              Expanding into Terraform fundamentals, Kubernetes basics, cloud concepts, and monitoring to match current hiring expectations.
+            </p>
+          </div>
+          <div class="glass card-hover rounded-[28px] p-7">
+            <div class="card-icon">A3</div>
+            <h3 class="mt-5 text-xl font-bold">Professional Readiness</h3>
+            <p class="mt-3 text-slate-300">
+              Combining technical support discipline with DevOps tooling so I can contribute in documentation, troubleshooting, automation, and delivery improvement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-reveal py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="glass overflow-hidden rounded-[34px] border border-white/10 p-8 lg:p-10">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
+            <div>
+              <div class="section-kicker">Profiles and CV</div>
+              <h2 class="section-title !text-4xl">Everything a recruiter needs in one place.</h2>
+              <p class="mt-4 max-w-xl text-slate-300">
+                Explore my GitHub profile, LinkedIn profile, and downloadable CV. This section is designed to make review and follow-up simple for recruiters and hiring managers.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <a href="https://github.com/alistohy" target="_blank" class="glass card-hover profile-card rounded-[26px] p-6">
+                <div class="font-mono text-xs uppercase tracking-[0.22em] text-cyanx">GitHub</div>
+                <div class="mt-2 break-words text-xl font-bold text-white">Ali Stohy</div>
+                <div class="mt-3 text-sm text-slate-400">GitHub profile with repositories, labs, and portfolio-related work.</div>
+              </a>
+              <a href="https://www.linkedin.com/in/ali-stohy-453792239/" target="_blank" class="glass card-hover profile-card rounded-[26px] p-6">
+                <div class="font-mono text-xs uppercase tracking-[0.22em] text-cyanx">LinkedIn</div>
+                <div class="mt-2 break-words text-xl font-bold text-white">Ali Stohy</div>
+                <div class="mt-3 text-sm text-slate-400">LinkedIn profile for networking, recruiters, and career opportunities.</div>
+              </a>
+              <a href="Ali Stohy (CV).pdf" download class="glass card-hover profile-card rounded-[26px] p-6">
+                <div class="font-mono text-xs uppercase tracking-[0.22em] text-cyanx">CV</div>
+                <div class="mt-2 text-xl font-bold text-white">Download PDF</div>
+                <div class="mt-3 text-sm text-slate-400">Direct access to my latest CV for recruiter review and shortlisting.</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-reveal pb-24 pt-10">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="glass overflow-hidden rounded-[34px] border border-cyanx/15 p-8 lg:p-10">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_.85fr]">
+            <div>
+              <div class="section-kicker">Contact</div>
+              <h2 class="section-title !text-4xl">Available for junior DevOps opportunities.</h2>
+              <p class="mt-4 max-w-2xl text-slate-300">
+                I'm actively looking for roles where I can contribute in CI/CD, Docker, Linux operations,
+                automation, and delivery workflow improvement while continuing to grow in cloud and infrastructure tooling.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a href="mailto:alifarajj43@gmail.com" class="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-cyanx to-bluex px-6 py-3 font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5">
+                  Email Me
+                </a>
+                <a href="Ali Stohy (CV).pdf" download class="inline-flex items-center gap-3 rounded-2xl border border-cyanx/30 bg-cyanx/10 px-6 py-3 font-semibold text-cyanx transition hover:border-cyanx hover:bg-cyanx/15">
+                  Download CV
+                </a>
+                <a href="tel:01022026362" class="inline-flex items-center gap-3 rounded-2xl border border-white/12 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-cyanx/40 hover:bg-white/10">
+                  Call Me
+                </a>
+              </div>
+            </div>
+
+            <div class="glass rounded-[28px] p-6">
+              <div class="font-mono text-xs uppercase tracking-[0.22em] text-cyanx">contact.json</div>
+              <div class="mt-4 space-y-3 text-sm text-slate-300">
+                <div><span class="text-slate-500">name:</span> Ali Stohy</div>
+                <div><span class="text-slate-500">role:</span> Junior DevOps Engineer</div>
+                <div><span class="text-slate-500">email:</span> alifarajj43@gmail.com</div>
+                <div><span class="text-slate-500">phone:</span> 01022026362</div>
+                <div><span class="text-slate-500">location:</span> Cairo, Egypt</div>
+                <div><span class="text-slate-500">focus:</span> Azure DevOps, Docker, Linux, CI/CD, Bash</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-8 text-sm text-slate-500 md:flex-row">
+          <p>(c) 2026 Ali Stohy. Built for DevOps and cloud hiring.</p>
+          <p>Focused on clarity, technical proof, and recruiter-friendly presentation.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
